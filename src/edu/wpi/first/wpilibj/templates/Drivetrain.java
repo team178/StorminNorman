@@ -8,7 +8,6 @@ public class Drivetrain {
 	private Joystick joystick;
 	private Joystick joystickKiddy;
 	
-
 	private double robotX, robotY, robotZ;
 	private double speed;
 
@@ -89,27 +88,24 @@ public class Drivetrain {
 	public void driveKiddy() {
 		double speedMod = this.speed;
 
-		if (joystick.getTrigger()) {
-			if (!joystick.getRawButton(2)) {
-				speedMod = 0.5;
-			}
+		if (joystick.getRawButton(6)) {
 
 			robotX = joystick.getRawAxis(1);
 			robotY = joystick.getRawAxis(2);
 			robotZ = joystick.getRawAxis(4);
 		} else {
-			speedMod = this.speed / 2;
+			speedMod = speedMod / 2;
 
 			robotX = joystickKiddy.getX();
 			robotY = joystickKiddy.getY();
 			robotZ = joystickKiddy.getTwist();
 		}
-	
 
-		frontLeft.set(  (robotZ + robotY - robotX) * speedMod);
-		rearLeft.set(   (robotZ + robotY + robotX) * speedMod);
-		frontRight.set( (robotZ - robotY - robotX) * speedMod);
-		rearRight.set(  (robotZ - robotY + robotX) * speedMod);
+		System.out.println(robotZ);
+		frontLeft.set(  (-robotZ + robotY + robotX) * speedMod);
+		rearLeft.set(   ( + robotY - robotX) * speedMod);
+		frontRight.set( (-robotZ - robotY + robotX) * speedMod);
+		rearRight.set(  ( - robotY - robotX) * speedMod);
 	}
 
 	/**

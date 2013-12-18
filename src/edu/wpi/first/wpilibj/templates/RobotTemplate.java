@@ -36,8 +36,8 @@ public class RobotTemplate extends IterativeRobot {
 
 		joystick = new Joystick(1);
 		joystickKiddy = new Joystick(2);
-
 		drivetrain = new Drivetrain(4, 3, 1, 2, 1.0);
+		//drivetrain = new Drivetrain(7, 3, 1, 2, 1.0);
 		drivetrain.setJoystick(joystick);
 		drivetrain.setJoystickKiddy(joystickKiddy);
 
@@ -85,7 +85,7 @@ public class RobotTemplate extends IterativeRobot {
 				kickerSolenoid.set(false);
 			}
 		}*/
-		drivetrain.drive();
+		drivetrain.driveKiddy();
 
 		watchdog.feed();
 	}
